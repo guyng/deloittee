@@ -1,0 +1,53 @@
+<mat-card *ngIf = "cityWeather" class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar>
+          <img src = "http://openweathermap.org/img/w/10d.png">
+      </div>
+      <mat-card-title>{{cityWeather.name}}</mat-card-title>
+      <mat-card-subtitle *ngIf = "cityWeather.weather && cityWeather.weather.length > 0">{{cityWeather.weather[0].main}}</mat-card-subtitle>
+    </mat-card-header> 
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content fxLayout = "column">
+        <div class="detail-item" fxLayout = "row" fxLayoutAlign = "space-between center">
+            <div>Current Temparture</div>
+            <div>{{cityWeather?.main?.temp}}</div>
+        </div>
+        <div class="detail-item">
+            <div>Max Temparture</div>
+            <div>{{cityWeather?.main?.temp_min}}</div>
+        </div>
+        <div class="detail-item">
+            <div>Min Temparture</div>
+            <div>{{cityWeather?.main?.temp_max}}</div>
+        </div>
+        <div class="detail-item">
+            <div>humidity</div>
+            <div>{{cityWeather?.main?.humidity}}</div>
+        </div>
+        <div class="detail-item">
+            <div>Sea Level</div>
+            <div>{{cityWeather?.main?.sea_level}}</div>
+        </div>
+        <!-- <ul>
+            <li>Current Temp: {{cityWeather.main?.temp}}</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul> -->
+      <!-- <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p> -->
+    </mat-card-content>
+    <mat-card-actions fxLayout = "row" fxLayoutAlign = "center center">
+      <button mat-button (click) = "updateWeatherCard()">Update</button>
+      <button mat-button (click) = "removeWeatherCard()">Remove</button>
+    </mat-card-actions>
+  </mat-card>
+  
+  
+  <!-- Copyright 2021 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->

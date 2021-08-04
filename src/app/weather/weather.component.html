@@ -1,0 +1,29 @@
+<div class="content" role="main">
+    <form name="form" [formGroup]="form">
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field>
+                <mat-label>Select City</mat-label>
+                <input formControlName="selectedOption" type="text" [(ngModel)]="selectedCityName"
+                    placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+                    [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let city of filteredCities$ | async" [value]="city.name">
+                        {{city.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <button class="mx-16 mb-8" mat-raised-button (click)="loadCityWeather()">
+                Add City Weather
+            </button>
+        </div>
+    </form>
+    <mat-progress-bar *ngIf="(loading$ | async)" mode="indeterminate">
+
+    </mat-progress-bar>
+    <div fxLayout="row wrap">
+        <weather-card class="mx-16 my-8" *ngFor="let cw of cityWeathers" [cityWeather]="cw">
+
+        </weather-card>
+    </div>
+</div>
